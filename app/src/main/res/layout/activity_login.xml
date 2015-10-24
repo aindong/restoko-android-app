@@ -1,58 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".LoginActivity">
+    android:orientation="vertical"
+    android:background="@color/javalogyMain">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="56dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp">
+        android:layout_height="match_parent"
+        android:layout_weight="0.4"
+        android:paddingTop="40dp">
 
-        <ImageView android:src="@drawable/java"
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/logo_javalogy"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.3"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp">
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="72dp"
-            android:layout_marginBottom="24dp"
-            android:layout_gravity="center_horizontal" />
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:hint="Email" />>
-        </android.support.design.widget.TextInputLayout>
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:padding="50dp"
+            android:background="#10000000">
 
-        <!-- Password Label -->
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_password"
-                android:layout_width="match_parent"
+            <EditText
+                android:layout_width="500dp"
                 android:layout_height="wrap_content"
+                android:id="@+id/username"
+                android:inputType="text"
+                android:hint="@string/edittext_hint_username"/>
+
+            <EditText
+                android:layout_width="500dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/password"
                 android:inputType="textPassword"
-                android:hint="Password"/>
-        </android.support.design.widget.TextInputLayout>
+                android:hint="@string/edittext_hint_password"/>
 
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_login"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:padding="12dp"
-            android:text="Login"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/button_label_login"
+                android:layout_marginTop="30dp"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="#ffffff" />
+        </LinearLayout>
 
-    </LinearLayout>
-</ScrollView>
+
+    </RelativeLayout>
+
+</LinearLayout>
