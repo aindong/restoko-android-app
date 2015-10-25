@@ -3,6 +3,7 @@ package com.aindong.restoko;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -46,9 +47,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     // Create a new intent for showing main activity
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("username", username.getText());
-                    intent.putExtra("password", password.getText());
-
+                    intent.putExtra("username", username.getText().toString());
                     startActivity(intent);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
