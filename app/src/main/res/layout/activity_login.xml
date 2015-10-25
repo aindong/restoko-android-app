@@ -36,14 +36,14 @@
             <EditText
                 android:layout_width="500dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/username"
+                android:id="@+id/textUsername"
                 android:inputType="text"
                 android:hint="@string/edittext_hint_username"/>
 
             <EditText
                 android:layout_width="500dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/password"
+                android:id="@+id/textPassword"
                 android:inputType="textPassword"
                 android:hint="@string/edittext_hint_password"/>
 
@@ -53,7 +53,8 @@
                 android:text="@string/button_label_login"
                 android:layout_marginTop="30dp"
                 android:background="@color/colorPrimaryDark"
-                android:textColor="#ffffff" />
+                android:textColor="#ffffff"
+                android:id="@+id/buttonLogin"/>
         </LinearLayout>
 
 
