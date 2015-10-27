@@ -57,6 +57,7 @@ public class ProductMenuFragment extends Fragment {
         pageList.add("Beverages");
         pageList.add("Rice Meals");
         pageList.add("Noodles");
+        pageList.add("Sandwitches");
 
         // BEGIN_INCLUDE (setup_viewpager)
         // Get the ViewPager and set it's PagerAdapter so that it can display items
