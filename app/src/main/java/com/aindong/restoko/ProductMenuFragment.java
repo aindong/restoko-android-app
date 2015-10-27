@@ -83,73 +83,34 @@ public class ProductMenuFragment extends Fragment {
         this.categories = new ArrayList<Category>();
 
         Category appetizers = new Category(1, "APPETIZERS", "appetizers");
-        Category pizzas = new Category(2, "PIZZAS", "pizzas");
-        Category salads = new Category(3, "SALADS", "salads");
-        Category beverages = new Category(4, "BEVERAGES", "beverages");
+        Category recommendations = new Category(2, "CHEF's RECOMMENDATIONS", "chefs-recommendations");
+        Category gourmet = new Category(2, "GOURMET BURGERS PANINIS & QUESADILLA", "gourmet-burgers-paninis-and-quesadilla");
+        Category pizzas = new Category(2, "PIZZA & SALADS", "pizza-and-salads");
+        Category pasta = new Category(2, "PASTA", "pasta");
         Category studentMeals = new Category(5, "STUDENT MEALS", "student-meals");
-        Category riceMeals = new Category(6, "RICE MEALS", "rice-meals");
-        Category sandwitches = new Category(7, "SANDWITCHES", "sandwitches");
+        Category desserts = new Category(5, "DESSERTS", "desserts");
+        Category drinks = new Category(4, "DRINKS", "drinks");
+
 
         // Add dummy products
         appetizers.addProduct(new Product(1, "Best Ever Jalapeno Poppers",
                 "best-ever-jalapeno-poppers",
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                "http://images.media-allrecipes.com/userphotos/250x250/963639.jpg",
+                "http://i.imgur.com/a1GwO8A.jpg",
                 120.50,
                 appetizers.id));
-
-        pizzas.addProduct(new Product(1, "Best Ever Jalapeno Poppers",
-                "best-ever-jalapeno-poppers",
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                "http://images.media-allrecipes.com/userphotos/250x250/963639.jpg",
-                120.50,
-                pizzas.id));
-
-        salads.addProduct(new Product(1, "Best Ever Jalapeno Poppers",
-                "best-ever-jalapeno-poppers",
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                "http://images.media-allrecipes.com/userphotos/250x250/963639.jpg",
-                120.50,
-                salads.id));
-
-        beverages.addProduct(new Product(1, "Best Ever Jalapeno Poppers",
-                "best-ever-jalapeno-poppers",
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                "http://images.media-allrecipes.com/userphotos/250x250/963639.jpg",
-                120.50,
-                beverages.id));
-
-        studentMeals.addProduct(new Product(1, "Best Ever Jalapeno Poppers",
-                "best-ever-jalapeno-poppers",
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                "http://images.media-allrecipes.com/userphotos/250x250/963639.jpg",
-                120.50,
-                studentMeals.id));
-
-        riceMeals.addProduct(new Product(1, "Best Ever Jalapeno Poppers",
-                "best-ever-jalapeno-poppers",
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                "http://images.media-allrecipes.com/userphotos/250x250/963639.jpg",
-                120.50,
-                riceMeals.id));
-
-        sandwitches.addProduct(new Product(1, "Best Ever Jalapeno Poppers",
-                "best-ever-jalapeno-poppers",
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                "http://images.media-allrecipes.com/userphotos/250x250/963639.jpg",
-                120.50,
-                sandwitches.id));
 
 
 
         // Categories into the list
         this.categories.add(appetizers);
         this.categories.add(pizzas);
-        this.categories.add(salads);
-        this.categories.add(beverages);
+        this.categories.add(recommendations);
+        this.categories.add(gourmet);
         this.categories.add(studentMeals);
-        this.categories.add(riceMeals);
-        this.categories.add(sandwitches);
+        this.categories.add(pasta);
+        this.categories.add(desserts);
+        this.categories.add(drinks);
     }
 
     class MenuPagerAdapter extends PagerAdapter {
