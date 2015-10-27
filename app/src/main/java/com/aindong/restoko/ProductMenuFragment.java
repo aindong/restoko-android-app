@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.aindong.restoko.common.view.SlidingTabLayout;
+import com.aindong.restoko.models.Category;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.List;
 public class ProductMenuFragment extends Fragment {
 
     static final String LOG_TAG = "ProductMenuFragment";
+    protected List<Category> categories;
 
     /**
      * A custom {@link ViewPager} title strip which looks much like Tabs present in Android v4.0 and
@@ -52,17 +54,12 @@ public class ProductMenuFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        List<String> pageList = new ArrayList<String>();
-        pageList.add("Snacks");
-        pageList.add("Beverages");
-        pageList.add("Rice Meals");
-        pageList.add("Noodles");
-        pageList.add("Sandwitches");
+        createCategories();
 
         // BEGIN_INCLUDE (setup_viewpager)
         // Get the ViewPager and set it's PagerAdapter so that it can display items
         mViewPager = (ViewPager) view.findViewById(R.id.menu_viewpager);
-        mViewPager.setAdapter(new MenuPagerAdapter(pageList));
+        mViewPager.setAdapter(new MenuPagerAdapter(this.categories));
         // END_INCLUDE (setup_viewpager)
 
         // BEGIN_INCLUDE (setup_slidingtablayout)
@@ -73,12 +70,35 @@ public class ProductMenuFragment extends Fragment {
         // END_INCLUDE (setup_slidingtablayout)
     }
 
+    private void createCategories()
+    {
+        // Create a list of categories
+        this.categories = new ArrayList<Category>();
+
+        Category appetizers = new Category(1, "APPETIZERS", "appetizers");
+        Category pizzas = new Category(1, "PIZZAS", "pizzas");
+        Category salads = new Category(1, "SALADS", "salads");
+        Category beverages = new Category(1, "BEVERAGES", "beverages");
+        Category studentMeals = new Category(1, "STUDENT MEALS", "student-meals");
+        Category riceMeals = new Category(1, "RICE MEALS", "rice-meals");
+        Category sandwitches = new Category(1, "SANDWITCHES", "sandwitches");
+
+        // Categories into the list
+        this.categories.add(appetizers);
+        this.categories.add(pizzas);
+        this.categories.add(salads);
+        this.categories.add(beverages);
+        this.categories.add(studentMeals);
+        this.categories.add(riceMeals);
+        this.categories.add(sandwitches);
+    }
+
     class MenuPagerAdapter extends PagerAdapter {
 
-        private List<String> pageList;
+        private List<Category> categories;
 
-        public MenuPagerAdapter(List<String> pageList) {
-            this.pageList = pageList;
+        public MenuPagerAdapter(List<Category> categories) {
+            this.categories = categories;
         }
 
         /**
@@ -86,7 +106,7 @@ public class ProductMenuFragment extends Fragment {
          */
         @Override
         public int getCount() {
-            return pageList.size();
+            return categories.size();
         }
 
         /**
@@ -108,7 +128,9 @@ public class ProductMenuFragment extends Fragment {
          */
         @Override
         public CharSequence getPageTitle(int position) {
-            return pageList.get(position);
+            Category category = categories.get(position);
+
+            return category.name;
         }
         // END_INCLUDE (pageradapter_getpagetitle)
 
