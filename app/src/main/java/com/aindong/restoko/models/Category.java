@@ -1,5 +1,6 @@
 package com.aindong.restoko.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Category {
@@ -26,6 +27,8 @@ public class Category {
         this.id = id;
         this.name = name;
         this.slug = slug;
+
+        products = new ArrayList<Product>();
     }
 
     /**

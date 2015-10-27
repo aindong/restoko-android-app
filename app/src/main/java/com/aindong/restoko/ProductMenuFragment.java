@@ -1,6 +1,7 @@
 package com.aindong.restoko;
 
 import android.app.Activity;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,10 +13,13 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.aindong.restoko.common.view.SlidingTabLayout;
 import com.aindong.restoko.models.Category;
+import com.aindong.restoko.models.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +28,7 @@ public class ProductMenuFragment extends Fragment {
 
     static final String LOG_TAG = "ProductMenuFragment";
     protected List<Category> categories;
+    public ProductsAdapter mProductAdapter;
 
     /**
      * A custom {@link ViewPager} title strip which looks much like Tabs present in Android v4.0 and
@@ -82,6 +87,58 @@ public class ProductMenuFragment extends Fragment {
         Category studentMeals = new Category(5, "STUDENT MEALS", "student-meals");
         Category riceMeals = new Category(6, "RICE MEALS", "rice-meals");
         Category sandwitches = new Category(7, "SANDWITCHES", "sandwitches");
+
+        // Add dummy products
+        appetizers.addProduct(new Product(1, "Best Ever Jalapeno Poppers",
+                "best-ever-jalapeno-poppers",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "http://images.media-allrecipes.com/userphotos/250x250/963639.jpg",
+                120.50,
+                appetizers.id));
+
+        pizzas.addProduct(new Product(1, "Best Ever Jalapeno Poppers",
+                "best-ever-jalapeno-poppers",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "http://images.media-allrecipes.com/userphotos/250x250/963639.jpg",
+                120.50,
+                pizzas.id));
+
+        salads.addProduct(new Product(1, "Best Ever Jalapeno Poppers",
+                "best-ever-jalapeno-poppers",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "http://images.media-allrecipes.com/userphotos/250x250/963639.jpg",
+                120.50,
+                salads.id));
+
+        beverages.addProduct(new Product(1, "Best Ever Jalapeno Poppers",
+                "best-ever-jalapeno-poppers",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "http://images.media-allrecipes.com/userphotos/250x250/963639.jpg",
+                120.50,
+                beverages.id));
+
+        studentMeals.addProduct(new Product(1, "Best Ever Jalapeno Poppers",
+                "best-ever-jalapeno-poppers",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "http://images.media-allrecipes.com/userphotos/250x250/963639.jpg",
+                120.50,
+                studentMeals.id));
+
+        riceMeals.addProduct(new Product(1, "Best Ever Jalapeno Poppers",
+                "best-ever-jalapeno-poppers",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "http://images.media-allrecipes.com/userphotos/250x250/963639.jpg",
+                120.50,
+                riceMeals.id));
+
+        sandwitches.addProduct(new Product(1, "Best Ever Jalapeno Poppers",
+                "best-ever-jalapeno-poppers",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "http://images.media-allrecipes.com/userphotos/250x250/963639.jpg",
+                120.50,
+                sandwitches.id));
+
+
 
         // Categories into the list
         this.categories.add(appetizers);
@@ -146,11 +203,8 @@ public class ProductMenuFragment extends Fragment {
             // Add the newly created View to the ViewPager
             container.addView(view);
 
-            // TODO: GET MENU ITEM HERE
-
-            // Retrieve a TextView from the inflated View, and update it's text
-            TextView title = (TextView) view.findViewById(R.id.item_title);
-            title.setText(String.valueOf(position + 1));
+            // Manage product list
+            configureProductListview(position, view);
 
             Log.i(LOG_TAG, "instantiateItem() [position: " + position + "]");
 
@@ -168,5 +222,48 @@ public class ProductMenuFragment extends Fragment {
             Log.i(LOG_TAG, "destroyItem() [position: " + position + "]");
         }
 
+        /**
+         * Manage product listing on listview
+         * @param position
+         * @param view
+         */
+        private void configureProductListview(int position, View view)
+        {
+            List<Product> products = this.categories.get(position).products;
+
+            // Instantiate productadapter
+            mProductAdapter = new ProductsAdapter(getContext(), products);
+
+            // Find listview for reference
+            ListView listView = (ListView) view.findViewById(R.id.listview_products);
+            // Assign arrayadapter to listview
+            listView.setAdapter(mProductAdapter);
+        }
+
+    }
+
+    public class ProductsAdapter extends ArrayAdapter<Product> {
+
+        public ProductsAdapter(Context context, List<Product> categories) {
+            super(context, 0, categories);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            // Get the data item for this position
+            Product product = getItem(position);
+
+            // Check if an existing view is being reused, otherwise inflate the view
+            if (convertView == null) {
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_product, parent, false);
+            }
+
+            // Lookup view for data population
+            TextView productName = (TextView) convertView.findViewById(R.id.text_product_name);
+            productName.setText(product.name);
+
+            // Return the completed view to render on screen
+            return convertView;
+        }
     }
 }
