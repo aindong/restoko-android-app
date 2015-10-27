@@ -14,12 +14,14 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.aindong.restoko.common.view.SlidingTabLayout;
 import com.aindong.restoko.models.Category;
 import com.aindong.restoko.models.Product;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -260,7 +262,11 @@ public class ProductMenuFragment extends Fragment {
 
             // Lookup view for data population
             TextView productName = (TextView) convertView.findViewById(R.id.text_product_name);
+            ImageView productImage = (ImageView) convertView.findViewById(R.id.image_product);
+
+            // Assign values
             productName.setText(product.name);
+            Picasso.with(getContext()).load(product.image_url).placeholder(R.drawable.food_placeholder).into(productImage);
 
             // Return the completed view to render on screen
             return convertView;
