@@ -76,12 +76,12 @@ public class ProductMenuFragment extends Fragment {
         this.categories = new ArrayList<Category>();
 
         Category appetizers = new Category(1, "APPETIZERS", "appetizers");
-        Category pizzas = new Category(1, "PIZZAS", "pizzas");
-        Category salads = new Category(1, "SALADS", "salads");
-        Category beverages = new Category(1, "BEVERAGES", "beverages");
-        Category studentMeals = new Category(1, "STUDENT MEALS", "student-meals");
-        Category riceMeals = new Category(1, "RICE MEALS", "rice-meals");
-        Category sandwitches = new Category(1, "SANDWITCHES", "sandwitches");
+        Category pizzas = new Category(2, "PIZZAS", "pizzas");
+        Category salads = new Category(3, "SALADS", "salads");
+        Category beverages = new Category(4, "BEVERAGES", "beverages");
+        Category studentMeals = new Category(5, "STUDENT MEALS", "student-meals");
+        Category riceMeals = new Category(6, "RICE MEALS", "rice-meals");
+        Category sandwitches = new Category(7, "SANDWITCHES", "sandwitches");
 
         // Categories into the list
         this.categories.add(appetizers);
