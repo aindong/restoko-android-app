@@ -43,6 +43,8 @@ public class CartActivity extends AppCompatActivity {
         Cart cart = FakeData.getCartByTableId(tableId);
         if (cart == null) {
             cart = new Cart(FakeData.carts.size() + 1, tableId);
+            // Save to global carts
+            FakeData.carts.add(cart);
         }
 
         // Add to cart

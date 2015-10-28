@@ -35,18 +35,15 @@ public class Cart {
         this.items = products;
     }
 
-    public boolean addProduct(CartItem item) {
-        boolean result = false;
+    public void addProduct(CartItem item) {
 
         // Check if product already exists
         if (searchProductOnList(item.product.id)) {
-            return result;
+            return;
         }
 
         // Add product on the list
         this.items.add(item);
-
-        return result;
     }
 
     /**
