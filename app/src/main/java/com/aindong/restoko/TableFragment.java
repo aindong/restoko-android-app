@@ -113,9 +113,18 @@ public class TableFragment extends Fragment {
                             try {
                                 Thread.sleep(2000);
 
+                                Intent intent;
                                 // Create a new intent for showing main activity
-                                Intent intent = new Intent(getContext(), MainActivity.class);
-                                intent.putExtra("table", table.id);
+                                // only if the table status is available
+                                if (table.status == "available") {
+                                    intent = new Intent(getContext(), MainActivity.class);
+                                    intent.putExtra("table", table.id);
+                                } else {
+                                    // Go directly to cart when table is occupied
+                                    intent = new Intent(getContext(), MainActivity.class);
+                                    intent.putExtra("table", table.id);
+                                }
+
                                 startActivity(intent);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
