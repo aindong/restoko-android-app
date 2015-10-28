@@ -95,12 +95,43 @@ public class ProductMenuFragment extends Fragment {
 
 
         // Add dummy products
-        appetizers.addProduct(new Product(1, "Best Ever Jalapeno Poppers",
+        appetizers.addProduct(new Product(1, "Tex-Mex Nachos",
                 "best-ever-jalapeno-poppers",
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "Platter of nacho chips topped with sautéed beef, cheese sauce and flavoured dressing (serves 2-3 people)",
                 "http://i.imgur.com/a1GwO8A.jpg",
-                120.50,
+                250,
                 appetizers.id));
+
+        appetizers.addProduct(new Product(1, "Nachos Deluxe",
+                "best-ever-jalapeno-poppers",
+                "Crispy nacho chips topped with taco beef, jalapeno, salsa, olives and cheese",
+                "http://i.imgur.com/a1GwO8A.jpg",
+                145,
+                appetizers.id));
+
+        appetizers.addProduct(new Product(1, "Java Chicken Wings",
+                "best-ever-jalapeno-poppers",
+                "Deep fried 3 pieces chicken wings coated with BBQ sauce served with crudités in Java aioli",
+                "http://i.imgur.com/a1GwO8A.jpg",
+                140,
+                appetizers.id));
+
+        appetizers.addProduct(new Product(1, "Hors D’oeuvres Plate",
+                "best-ever-jalapeno-poppers",
+                "A platter of breaded and spicy calamari, buffalo wings, fish fillet, shrimp and potato fries (serves 3-4 people)",
+                "http://i.imgur.com/a1GwO8A.jpg",
+                650,
+                appetizers.id));
+
+        appetizers.addProduct(new Product(1, "Poutine",
+                "best-ever-jalapeno-poppers",
+                "Potato fries, cheese and gravy.",
+                "http://i.imgur.com/a1GwO8A.jpg",
+                100,
+                appetizers.id));
+
+
+
 
 
 
