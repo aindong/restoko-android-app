@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                     Thread.sleep(2000);
 
                     // Create a new intent for showing main activity
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), TablesActivity.class);
                     intent.putExtra("username", username.getText().toString());
                     startActivity(intent);
                 } catch (InterruptedException e) {
