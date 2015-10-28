@@ -45,12 +45,12 @@ public class FakeData {
     private static void createCategoriesAndProducts() {
         Category appetizers = new Category(1, "APPETIZERS", "appetizers");
         Category recommendations = new Category(2, "CHEF's RECOMMENDATIONS", "chefs-recommendations");
-        Category gourmet = new Category(2, "GOURMET BURGERS PANINIS & QUESADILLA", "gourmet-burgers-paninis-and-quesadilla");
-        Category pizzas = new Category(2, "PIZZA & SALADS", "pizza-and-salads");
-        Category pasta = new Category(2, "PASTA", "pasta");
-        Category studentMeals = new Category(5, "STUDENT MEALS", "student-meals");
-        Category desserts = new Category(5, "DESSERTS", "desserts");
-        Category drinks = new Category(4, "DRINKS", "drinks");
+        Category gourmet = new Category(3, "GOURMET BURGERS PANINIS & QUESADILLA", "gourmet-burgers-paninis-and-quesadilla");
+        Category pizzas = new Category(4, "PIZZA & SALADS", "pizza-and-salads");
+        Category pasta = new Category(5, "PASTA", "pasta");
+        Category studentMeals = new Category(6, "STUDENT MEALS", "student-meals");
+        Category desserts = new Category(7, "DESSERTS", "desserts");
+        Category drinks = new Category(8, "DRINKS", "drinks");
 
 
         // Add dummy products
@@ -61,28 +61,28 @@ public class FakeData {
                 250,
                 appetizers.id));
 
-        appetizers.addProduct(new Product(1, "Nachos Deluxe",
+        appetizers.addProduct(new Product(2, "Nachos Deluxe",
                 "best-ever-jalapeno-poppers",
                 "Crispy nacho chips topped with taco beef, jalapeno, salsa, olives and cheese",
                 "https://i.imgur.com/rjoLxVH.jpg",
                 145,
                 appetizers.id));
 
-        appetizers.addProduct(new Product(1, "Java Chicken Wings",
+        appetizers.addProduct(new Product(3, "Java Chicken Wings",
                 "best-ever-jalapeno-poppers",
                 "Deep fried 3 pieces chicken wings coated with BBQ sauce served with crudités in Java aioli",
                 "https://i.imgur.com/l2VyrBL.jpg",
                 140,
                 appetizers.id));
 
-        appetizers.addProduct(new Product(1, "Hors D’oeuvres Plate",
+        appetizers.addProduct(new Product(4, "Hors D’oeuvres Plate",
                 "best-ever-jalapeno-poppers",
                 "A platter of breaded and spicy calamari, buffalo wings, fish fillet, shrimp and potato fries (serves 3-4 people)",
                 "http://i.imgur.com/a1GwO8A.jpg",
                 650,
                 appetizers.id));
 
-        appetizers.addProduct(new Product(1, "Poutine",
+        appetizers.addProduct(new Product(5, "Poutine",
                 "best-ever-jalapeno-poppers",
                 "Potato fries, cheese and gravy.",
                 "http://i.imgur.com/a1GwO8A.jpg",
@@ -91,21 +91,21 @@ public class FakeData {
 
 
         // CHEFS RECOMMENDATIONS
-        recommendations.addProduct(new Product(1, "Surf and Turf",
+        recommendations.addProduct(new Product(6, "Surf and Turf",
                 "surf-and-turf",
                 "Grilled “Angus” Salisbury steak and breaded shrimp served with Java gravy, green salad and rice.",
                 "https://i.imgur.com/Blt6mYj.jpg",
                 280,
                 recommendations.id));
 
-        recommendations.addProduct(new Product(1, "Grilled Pork Steak",
+        recommendations.addProduct(new Product(7, "Grilled Pork Steak",
                 "surf-and-turf",
                 "Marinated pork steak grilled to perfection served with buttered vegetables, rice and Java gravy",
                 "https://i.imgur.com/WF65HQw.png",
                 280,
                 recommendations.id));
 
-        recommendations.addProduct(new Product(1, "Herb and Nut Crusted Fish Fillet",
+        recommendations.addProduct(new Product(8, "Herb and Nut Crusted Fish Fillet",
                 "surf-and-turf",
                 "Crispy pan-fried fish fillet coated with herbs and nuts served with green salad and rice",
                 "https://i.imgur.com/WF65HQw.png",
@@ -113,21 +113,21 @@ public class FakeData {
                 recommendations.id));
 
         // PIZZA AND SALADS
-        pizzas.addProduct(new Product(1, "Java Garden Salad",
+        pizzas.addProduct(new Product(9, "Java Garden Salad",
                 "surf-and-turf",
                 "Lettuce, tomato, turnips, carrots, cucumber, bell peppers served with honey orange vinaigrette.",
                 "https://i.imgur.com/T8K88Yq.jpg",
                 115,
                 pizzas.id));
 
-        pizzas.addProduct(new Product(1, "Pizza Margherita",
+        pizzas.addProduct(new Product(10, "Pizza Margherita",
                 "surf-and-turf",
                 "Homemade pizza with Java tomato sauce.",
                 "https://i.imgur.com/NQeYwNu.jpg",
                 155,
                 pizzas.id));
 
-        pizzas.addProduct(new Product(1, "Java Caesar Salad",
+        pizzas.addProduct(new Product(11, "Java Caesar Salad",
                 "surf-and-turf",
                 "Our version of Caesar salad, lettuce, bacon, croutons, parmesan cheese served with homemade Caesar dressing",
                 "https://i.imgur.com/jZhvUwy.jpg",
