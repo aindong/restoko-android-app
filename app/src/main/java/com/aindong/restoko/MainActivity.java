@@ -10,6 +10,7 @@ import android.widget.ViewAnimator;
 public class MainActivity extends AppCompatActivity {
 
     public String accessToken;
+    public int tableId;
 
     public static final String TAG = "MainActivity";
 
@@ -18,13 +19,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (savedInstanceState == null) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            ProductMenuFragment fragment = new ProductMenuFragment();
-            transaction.replace(R.id.sample_content_fragment, fragment);
-            transaction.commit();
-        }
-
         // Get extras
         Bundle bundle = getIntent().getExtras();
 
@@ -32,7 +26,15 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        int tableId = bundle.getInt("table");
+        this.tableId = bundle.getInt("table");
+
+        if (savedInstanceState == null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            ProductMenuFragment fragment = new ProductMenuFragment();
+            fragment.setArguments(bundle);
+            transaction.replace(R.id.sample_content_fragment, fragment);
+            transaction.commit();
+        }
     }
 
     @Override
