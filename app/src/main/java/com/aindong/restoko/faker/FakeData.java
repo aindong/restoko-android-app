@@ -24,6 +24,36 @@ public class FakeData {
         createCategoriesAndProducts();
     }
 
+    public static Product getProductById(int productId)
+    {
+        // Iterate each product on the list
+        for (int i = 0; i < products.size(); i++) {
+            Product tmpProduct = products.get(i);
+
+            // Check if product id is same with the current item
+            if (tmpProduct.id == productId) {
+                return tmpProduct;
+            }
+        }
+
+        return null;
+    }
+
+    public static Cart getCartByTableId(int tableId)
+    {
+        // Iterate each product on the list
+        for (int i = 0; i < carts.size(); i++) {
+            Cart cart = carts.get(i);
+
+            // Check if product id is same with the current item
+            if (cart.table_id == tableId) {
+                return cart;
+            }
+        }
+
+        return null;
+    }
+
     private static void createTables() {
         tables.add(new Table(1, "Table R1", "available"));
         tables.add(new Table(2, "Table R2", "available"));

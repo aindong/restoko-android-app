@@ -30,8 +30,7 @@
             android:parentActivityName=".TablesActivity" >
         </activity>
 
-        <activity android:name=".CartActivity"
-            android:parentActivityName=".MainActivity">
+        <activity android:name=".CartActivity">
         </activity>
     </application>
 
