@@ -16,6 +16,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aindong.restoko.faker.FakeData;
 import com.aindong.restoko.models.Table;
 
 import java.util.ArrayList;
@@ -42,24 +43,7 @@ public class TableFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        List<Table> tables = new ArrayList<Table>();
-        tables.add(new Table(1, "Table R1", "available"));
-        tables.add(new Table(2, "Table R2", "available"));
-        tables.add(new Table(3, "Table R3", "available"));
-        tables.add(new Table(4, "Table R4", "available"));
-        tables.add(new Table(5, "Table R5", "available"));
-        tables.add(new Table(6, "Table R6", "available"));
-        tables.add(new Table(7, "Table R7", "available"));
-        tables.add(new Table(8, "Table R8", "available"));
-        tables.add(new Table(9, "Table R9", "occupied"));
-        tables.add(new Table(10, "Table R10", "available"));
-        tables.add(new Table(11, "Table B1", "available"));
-        tables.add(new Table(12, "Table B2", "available"));
-        tables.add(new Table(13, "Table B3", "occupied"));
-        tables.add(new Table(14, "Table B4", "available"));
-        tables.add(new Table(15, "Table B5", "occupied"));
-
-        TablesAdapter tablesAdapter = new TablesAdapter(getActivity(), tables);
+        TablesAdapter tablesAdapter = new TablesAdapter(getActivity(), FakeData.tables);
 
         GridView tablesGrid = (GridView) view.findViewById(R.id.gridview_tables);
         tablesGrid.setAdapter(tablesAdapter);
