@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.aindong.restoko.faker.FakeData;
+
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
 
@@ -29,6 +31,8 @@ public class LoginActivity extends AppCompatActivity {
                 doLogin(textUsername, textPassword);
             }
         });
+
+        FakeData.make();
     }
 
     private void doLogin(final EditText username, final EditText password) {
