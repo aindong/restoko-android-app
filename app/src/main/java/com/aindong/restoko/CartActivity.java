@@ -18,5 +18,10 @@ public class CartActivity extends AppCompatActivity {
         }
 
         int tableId = bundle.getInt("table");
+
+        int productId;
+        if (bundle.containsKey("product")) {
+            productId = bundle.getInt("product");
+        }
     }
 }
