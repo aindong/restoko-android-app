@@ -1,19 +1,15 @@
 package com.aindong.restoko;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.aindong.restoko.faker.FakeData;
 import com.aindong.restoko.models.Cart;
@@ -86,7 +82,6 @@ public class CartActivity extends AppCompatActivity {
             TextView productName = (TextView) convertView.findViewById(R.id.text_product_name);
             TextView productAmount = (TextView) convertView.findViewById(R.id.text_product_amount);
             ImageView productImage = (ImageView) convertView.findViewById(R.id.image_product);
-            ImageButton btnAddToCart = (ImageButton) convertView.findViewById(R.id.add_to_cart);
 
             // Assign values
             productName.setText(item.product.name);
