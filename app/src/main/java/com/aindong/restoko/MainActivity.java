@@ -24,6 +24,15 @@ public class MainActivity extends AppCompatActivity {
             transaction.replace(R.id.sample_content_fragment, fragment);
             transaction.commit();
         }
+
+        // Get extras
+        Bundle bundle = getIntent().getExtras();
+
+        if (bundle == null) {
+            return;
+        }
+
+        int tableId = bundle.getInt("table");
     }
 
     @Override
