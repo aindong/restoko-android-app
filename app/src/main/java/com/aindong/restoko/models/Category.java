@@ -1,5 +1,7 @@
 package com.aindong.restoko.models;
 
+import com.aindong.restoko.faker.FakeData;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +53,7 @@ public class Category {
             return;
         }
 
+        FakeData.products.add(product);
         this.products.add(product);
     }
 }
