@@ -5,6 +5,7 @@ import com.aindong.restoko.models.Category;
 import com.aindong.restoko.models.Product;
 import com.aindong.restoko.models.Table;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FakeData {
@@ -14,6 +15,11 @@ public class FakeData {
     public static List<Cart> carts;
 
     public static void make() {
+        categories = new ArrayList<Category>();
+        products = new ArrayList<Product>();
+        tables = new ArrayList<Table>();
+        carts = new ArrayList<Cart>();
+
         createTables();
         createCategoriesAndProducts();
     }
