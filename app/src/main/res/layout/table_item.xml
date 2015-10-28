@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/table1"
+        android:layout_column="11"
+        android:background="@color/javalogyMain"
+        android:src="@drawable/table_icon"
+        android:padding="30dp"/>
+
+    <TextView
+        android:id="@+id/text_table_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="available"
+        android:gravity="top|center"
+        android:textAlignment="gravity"
+        android:padding="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#fff"
+        android:textSize="15dp"
+        android:textAllCaps="true"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/button_table"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1d000000"
+        android:text="Table R1"
+        android:textColor="#000"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:gravity="bottom|center"
+        android:paddingBottom="5dp"/>
+</FrameLayout>
