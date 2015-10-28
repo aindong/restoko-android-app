@@ -23,6 +23,8 @@ import com.aindong.restoko.models.Category;
 import com.aindong.restoko.models.Product;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -223,10 +225,12 @@ public class ProductMenuFragment extends Fragment {
 
             // Lookup view for data population
             TextView productName = (TextView) convertView.findViewById(R.id.text_product_name);
+            TextView productAmount = (TextView) convertView.findViewById(R.id.text_product_amount);
             ImageView productImage = (ImageView) convertView.findViewById(R.id.image_product);
 
             // Assign values
             productName.setText(product.name);
+            productAmount.setText(Double.toString(product.amount));
             Picasso.with(getContext()).load(product.image_url).placeholder(R.drawable.food_placeholder).into(productImage);
 
             // Return the completed view to render on screen
