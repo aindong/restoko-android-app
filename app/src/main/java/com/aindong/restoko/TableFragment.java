@@ -2,9 +2,11 @@ package com.aindong.restoko;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.design.widget.TabLayout;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aindong.restoko.models.Table;
 
@@ -71,7 +74,7 @@ public class TableFragment extends Fragment {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             // Get the data item for this position
-            Table table = getItem(position);
+            final Table table = getItem(position);
 
             // Check if an existing view is being reused, otherwise inflate the view
             if (convertView == null) {
@@ -79,7 +82,7 @@ public class TableFragment extends Fragment {
             }
 
             // Lookup view for data population
-            Button tableName = (Button) convertView.findViewById(R.id.button_table);
+            final Button tableName = (Button) convertView.findViewById(R.id.button_table);
             TextView tableStatus = (TextView) convertView.findViewById(R.id.text_table_status);
 
             // Assign values
@@ -93,6 +96,37 @@ public class TableFragment extends Fragment {
             }
 
             tableStatus.setBackgroundColor(getResources().getColor(textColor));
+
+            // Click listener
+            tableName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast toast = Toast.makeText(getContext(), "Preparing " + tableName.getText() + "...", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+
+                    // Create a new thread for processing the table
+                    // This is needed to not disrupt the main thread or ui thread from hanging
+                    Thread thread = new Thread() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(2000);
+
+                                // Create a new intent for showing main activity
+                                Intent intent = new Intent(getContext(), MainActivity.class);
+                                intent.putExtra("table", table.id);
+                                startActivity(intent);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    };
+
+                    // Start the thread worker
+                    thread.start();
+                }
+            });
 
             // Return the completed view to render on screen
             return convertView;
