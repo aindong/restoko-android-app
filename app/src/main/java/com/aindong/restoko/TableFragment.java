@@ -121,7 +121,7 @@ public class TableFragment extends Fragment {
                                     intent.putExtra("table", table.id);
                                 } else {
                                     // Go directly to cart when table is occupied
-                                    intent = new Intent(getContext(), MainActivity.class);
+                                    intent = new Intent(getContext(), CartActivity.class);
                                     intent.putExtra("table", table.id);
                                 }
 
