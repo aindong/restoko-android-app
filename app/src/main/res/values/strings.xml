@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RestoKO</string>
+    <string name="app_name">JAVALOGY OrderTaker</string>
     <string name="logo_javalogy">logo_javalogy</string>
     <string name="button_label_login">Login</string>
     <string name="button_label_cancel">Cancel</string>
