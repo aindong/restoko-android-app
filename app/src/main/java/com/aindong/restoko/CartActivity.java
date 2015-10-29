@@ -1,6 +1,7 @@
 package com.aindong.restoko;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -44,7 +46,7 @@ public class CartActivity extends AppCompatActivity {
             return;
         }
 
-        int tableId = bundle.getInt("table");
+        final int tableId = bundle.getInt("table");
 
         // Check if there's a cart already for table
         cart = FakeData.getCartByTableId(tableId);
@@ -76,6 +78,31 @@ public class CartActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.listview_cart);
         CartItemsAdapter cartItemsAdapter = new CartItemsAdapter(getApplicationContext(), cart.items);
         listView.setAdapter(cartItemsAdapter);
+
+        Button addProduct = (Button) findViewById(R.id.button_add_product);
+        addProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Thread thread = new Thread() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(1000);
+
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.putExtra("table", tableId);
+
+                            startActivity(intent);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+
+                // Start the thread worker
+                thread.start();
+            }
+        });
     }
 
     public class CartItemsAdapter extends ArrayAdapter<CartItem> {
