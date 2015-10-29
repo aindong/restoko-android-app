@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:gravity="right">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/image_product"
+            android:contentDescription="@string/image_product_desc"
+            android:src="@drawable/food_placeholder"
+            android:layout_gravity="left"
+            android:layout_weight="0"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:gravity="left"
+            android:layout_weight="5">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_product_name"
+                android:textSize="20sp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginLeft="15dp"
+                android:text="Sample Longest of Longest Product Name"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_product_description"
+                android:textSize="15sp"
+                android:textColor="#000"
+                android:layout_marginLeft="15dp"
+                android:text="Sample Longest of Longest Product Name and "/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_product_amount"
+                    android:textSize="20sp"
+                    android:textColor="#3e3e3e"
+                    android:text="PHP 120.50"
+                    android:layout_marginRight="40dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="#3e3e3e"
+                    android:text="Total Price: PHP "/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_individual_total"
+                    android:textSize="20sp"
+                    android:textColor="#3e3e3e"
+                    android:layout_marginRight="15dp"
+                    android:text="1000.00"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentLeft="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="#3e3e3e"
+                        android:text="Quantity: "/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/text_product_quantity"
+                        android:textSize="20sp"
+                        android:textColor="#3e3e3e"
+                        android:layout_marginRight="15dp"
+                        android:text="10"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentRight="true">
+
+                    <ImageButton
+                        android:id="@+id/subtract_cart_item"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="right"
+                        android:background="@color/colorPrimaryDarkRed"
+                        android:src="@drawable/icon_minus"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"
+                        android:padding="12dp"
+                        android:layout_marginRight="10dp"/>
+
+                    <ImageButton
+                        android:id="@+id/add_cart_item"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="right"
+                        android:background="@color/colorPrimaryDark"
+                        android:src="@drawable/icon_plus"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"
+                        android:padding="12dp"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
