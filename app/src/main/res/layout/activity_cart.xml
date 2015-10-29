@@ -1,16 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.aindong.restoko.CartActivity">
+    tools:context="com.aindong.restoko.CartActivity"
+    android:orientation="vertical">
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listview_cart">
+        android:id="@+id/listview_cart"
+        android:layout_weight="0.5">
     </ListView>
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="0">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="#c1994f">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total: "
+                android:textSize="20dp"
+                android:textColor="#fff"/>
+
+            <TextView
+                android:id="@+id/text_total_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1000.00"
+                android:textSize="20dp"
+                android:textColor="#fff"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="#c1994f">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VAT: "
+                android:textSize="20dp"
+                android:textColor="#fff"/>
+
+            <TextView
+                android:id="@+id/text_vat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1000.00"
+                android:textSize="20dp"
+                android:textColor="#fff"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="#c1994f">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VATABLE: "
+                android:textSize="20dp"
+                android:textColor="#fff"/>
+
+            <TextView
+                android:id="@+id/text_vatable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1000.00"
+                android:textSize="20dp"
+                android:textColor="#fff"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="#c1994f">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DISCOUNT: "
+                android:textSize="20dp"
+                android:textColor="#fff"/>
+
+            <TextView
+                android:id="@+id/text_discount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1000.00"
+                android:textSize="20dp"
+                android:textColor="#fff"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
