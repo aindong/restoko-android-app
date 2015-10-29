@@ -77,6 +77,13 @@ public class Cart {
         return vat;
     }
 
+    public double calculateDiscount(double discount) {
+        discount = discount / 100;
+        discount = totalPrice * discount;
+
+        return discount;
+    }
+
     public void applyDiscount(double discount) {
         discount = discount / 100;
         discount = totalPrice * discount;
