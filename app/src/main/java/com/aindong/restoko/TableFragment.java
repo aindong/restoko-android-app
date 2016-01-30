@@ -3,9 +3,11 @@ package com.aindong.restoko;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.design.widget.TabLayout;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,10 @@ import android.widget.Toast;
 import com.aindong.restoko.faker.FakeData;
 import com.aindong.restoko.models.Table;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,9 +34,12 @@ import java.util.List;
  */
 public class TableFragment extends Fragment {
 
+    public static List<Table> tables;
+    private TablesAdapter tablesAdapter;
 
     public TableFragment() {
         // Required empty public constructor
+        tables = new ArrayList<Table>();
     }
 
 
@@ -43,10 +52,50 @@ public class TableFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        TablesAdapter tablesAdapter = new TablesAdapter(getActivity(), FakeData.tables);
+        tablesAdapter = new TablesAdapter(getActivity(), tables);
 
         GridView tablesGrid = (GridView) view.findViewById(R.id.gridview_tables);
         tablesGrid.setAdapter(tablesAdapter);
+
+        FetchTablesTask tablesTask = new FetchTablesTask();
+        tablesTask.execute();
+    }
+
+    public class FetchTablesTask extends AsyncTask<Void, String, List<Table>> {
+        private final String LOG_TAG = FetchTablesTask.class.getSimpleName();
+
+        protected List<Table> doInBackground(Void... params) {
+            Table table = new Table();
+
+            List<Table> tables = new ArrayList<Table>();
+
+            String json = table.fetch("tables");
+
+            try {
+                int status = table.getStatus(json);
+                JSONArray data = table.getData(json);
+
+                // Make sure to clean the tables arraylist first
+                tables.clear();
+                // Iterate thru each jsonarray of tables and add them to the arraylist
+                for (int i = 0; i < data.length(); i++) {
+                    JSONObject obj = data.getJSONObject(i);
+
+                    tables.add(new Table(obj.getInt("id"), obj.getString("name"), obj.getString("status")));
+                }
+            } catch (JSONException e) {
+                Log.e(LOG_TAG, "ERROR PARSING JSON OBJECT");
+            }
+
+            return tables;
+        }
+
+        @Override
+        protected void onPostExecute(List<Table> tables) {
+            for (Table table : tables) {
+                tablesAdapter.add(table);
+            }
+        }
     }
 
     public class TablesAdapter extends ArrayAdapter<Table> {

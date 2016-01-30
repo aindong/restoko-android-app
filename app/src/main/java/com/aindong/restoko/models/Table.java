@@ -7,6 +7,10 @@ public class Table extends Model {
     public String name;
     public String status;
 
+    public Table() {
+        // Do nothing
+    }
+
     public Table(int id, String name, String status) {
         this.id = id;
         this.name = name;

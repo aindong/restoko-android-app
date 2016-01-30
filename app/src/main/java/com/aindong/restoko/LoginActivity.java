@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        FakeData.make();
+        //FakeData.make();
     }
 
     private void doLogin(final EditText username, final EditText password) {

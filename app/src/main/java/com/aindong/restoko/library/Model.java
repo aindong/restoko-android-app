@@ -2,6 +2,10 @@ package com.aindong.restoko.library;
 
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,10 +14,25 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public abstract class Model {
-    private static final String API_URL  = "http://localhost:8000/api/v1/";
+    private final String LOG_TAG = Model.class.getSimpleName();
+    private static final String API_URL  = "http://192.168.1.2:8000/api/v1/";
 
-    protected String fetch(String resource) {
+    public String fetch(String resource) {
         return this.request("GET", resource);
+    }
+
+    public JSONArray getData(String json) throws JSONException {
+        JSONObject data = new JSONObject(json);
+
+        JSONArray result = data.getJSONArray("data");
+
+        return result;
+    }
+
+    public int getStatus(String json) throws JSONException {
+        JSONObject data = new JSONObject(json);
+
+        return data.getInt("status");
     }
 
     private String request(String method, String resource) {
@@ -30,6 +49,7 @@ public abstract class Model {
             // Possible parameters are avaiable at OWM's forecast API page, at
             // http://openweathermap.org/API#forecast
             String finalUrl = API_URL + resource;
+            Log.i(LOG_TAG, finalUrl);
             URL url = new URL(finalUrl);
 
             // Create the request to OpenWeatherMap, and open the connection
@@ -60,7 +80,7 @@ public abstract class Model {
             }
             jsonStr = buffer.toString();
         } catch (IOException e) {
-            Log.e("PlaceholderFragment", "Error ", e);
+            Log.e(LOG_TAG, "Error ", e);
             // If the code didn't successfully get the weather data, there's no point in attemping
             // to parse it.
             return null;
@@ -72,7 +92,7 @@ public abstract class Model {
                 try {
                     reader.close();
                 } catch (final IOException e) {
-                    Log.e("PlaceholderFragment", "Error closing stream", e);
+                    Log.e(LOG_TAG, "Error closing stream", e);
                 }
             }
         }
