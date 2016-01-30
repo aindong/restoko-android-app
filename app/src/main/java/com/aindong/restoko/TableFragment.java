@@ -149,7 +149,7 @@ public class TableFragment extends Fragment {
                                 Intent intent;
                                 // Create a new intent for showing main activity
                                 // only if the table status is available
-                                if (table.status == "available") {
+                                if (table.status.equalsIgnoreCase("available")) {
                                     intent = new Intent(getContext(), MainActivity.class);
                                     intent.putExtra("table", table.id);
                                 } else {
