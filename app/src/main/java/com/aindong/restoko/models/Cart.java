@@ -3,7 +3,9 @@ package com.aindong.restoko.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cart {
+import com.aindong.restoko.library.Model;
+
+public class Cart extends Model {
     public int id;
     public int table_id;
     public List<CartItem> items;

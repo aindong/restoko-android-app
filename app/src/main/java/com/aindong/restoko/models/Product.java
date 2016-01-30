@@ -1,6 +1,8 @@
 package com.aindong.restoko.models;
 
-public class Product {
+import com.aindong.restoko.library.Model;
+
+public class Product extends Model {
     public int id;
     public String name;
     public String slug;

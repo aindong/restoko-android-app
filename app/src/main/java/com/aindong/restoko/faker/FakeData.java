@@ -1,5 +1,7 @@
 package com.aindong.restoko.faker;
 
+import android.util.Log;
+
 import com.aindong.restoko.models.Cart;
 import com.aindong.restoko.models.Category;
 import com.aindong.restoko.models.Product;
@@ -52,6 +54,10 @@ public class FakeData {
         }
 
         return null;
+    }
+
+    private static void getTables() {
+
     }
 
     private static void createTables() {

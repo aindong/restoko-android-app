@@ -1,6 +1,8 @@
 package com.aindong.restoko.models;
 
-public class Table {
+import com.aindong.restoko.library.Model;
+
+public class Table extends Model {
     public int id;
     public String name;
     public String status;

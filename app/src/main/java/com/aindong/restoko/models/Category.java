@@ -4,8 +4,9 @@ import com.aindong.restoko.faker.FakeData;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.aindong.restoko.library.Model;
 
-public class Category {
+public class Category extends Model {
     // Id property of the category
     public int id;
 

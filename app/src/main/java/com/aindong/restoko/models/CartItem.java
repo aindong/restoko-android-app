@@ -1,6 +1,8 @@
 package com.aindong.restoko.models;
 
-public class CartItem {
+import com.aindong.restoko.library.Model;
+
+public class CartItem extends Model {
     public int id;
     public Product product;
     public int quantity;
