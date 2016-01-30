@@ -123,7 +123,7 @@ public class TableFragment extends Fragment {
             tableStatus.setText(table.status);
 
             int textColor = R.color.colorPrimaryDarkRed;
-            if (table.status == "available") {
+            if (table.status.equalsIgnoreCase("available")) {
                 textColor = R.color.colorPrimaryDark;
                 tableStatus.setBackgroundColor(getResources().getColor(textColor));
             }

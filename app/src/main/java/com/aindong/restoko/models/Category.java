@@ -19,6 +19,10 @@ public class Category extends Model {
     // List of Products inside the category
     public List<Product> products;
 
+    public Category() {
+        // Do nothing
+    }
+
     /**
      * Constructor when creating a new category
      *
@@ -54,7 +58,7 @@ public class Category extends Model {
             return;
         }
 
-        FakeData.products.add(product);
+        //FakeData.products.add(product);
         this.products.add(product);
     }
 }
