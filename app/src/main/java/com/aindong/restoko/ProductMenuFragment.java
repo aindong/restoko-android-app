@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.annotation.Nullable;
@@ -28,6 +29,9 @@ import com.aindong.restoko.models.Category;
 import com.aindong.restoko.models.Product;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -35,7 +39,7 @@ import java.util.List;
 
 public class ProductMenuFragment extends Fragment {
 
-    static final String LOG_TAG = "ProductMenuFragment";
+    static final String LOG_TAG = ProductMenuFragment.class.getSimpleName();
     protected List<Category> categories;
     public ProductsAdapter mProductAdapter;
     public int tableId;
@@ -54,6 +58,7 @@ public class ProductMenuFragment extends Fragment {
 
     public ProductMenuFragment() {
         // Required empty public constructor
+        categories = new ArrayList<Category>();
     }
 
     @Override
@@ -76,18 +81,11 @@ public class ProductMenuFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        // BEGIN_INCLUDE (setup_viewpager)
-        // Get the ViewPager and set it's PagerAdapter so that it can display items
         mViewPager = (ViewPager) view.findViewById(R.id.menu_viewpager);
-        mViewPager.setAdapter(new MenuPagerAdapter(FakeData.categories));
-        // END_INCLUDE (setup_viewpager)
-
-        // BEGIN_INCLUDE (setup_slidingtablayout)
-        // Give the SlidingTabLayout the ViewPager, this must be done AFTER the ViewPager has had
-        // it's PagerAdapter set.
         mSlidingTabLayout = (SlidingTabLayout) view.findViewById(R.id.sliding_tabs);
-        mSlidingTabLayout.setViewPager(mViewPager);
-        // END_INCLUDE (setup_slidingtablayout)
+
+        FetchCategoriesTask categoriesTask = new FetchCategoriesTask();
+        categoriesTask.execute();
     }
 
     class MenuPagerAdapter extends PagerAdapter {
@@ -243,6 +241,71 @@ public class ProductMenuFragment extends Fragment {
 
             // Return the completed view to render on screen
             return convertView;
+        }
+    }
+
+    public class FetchCategoriesTask extends AsyncTask<Void, String, List<Category>> {
+        private final String LOG_TAG = FetchCategoriesTask.class.getSimpleName();
+
+        @Override
+        protected List<Category> doInBackground(Void... params) {
+
+            Category category = new Category();
+
+            List<Category> categories = new ArrayList<Category>();
+
+            String json = category.fetch("categories/products");
+
+            try {
+                int status = category.getStatus(json);
+                JSONArray data = category.getData(json);
+
+                // Make sure to clean the categories arraylist first
+                categories.clear();
+                // Iterate thru each jsonarray of categories and add them to the arraylist
+                for (int i = 0; i < data.length(); i++) {
+                    JSONObject obj = data.getJSONObject(i);
+                    Category categoryData = new Category(obj.getInt("id"), obj.getString("name"), obj.getString("slug"));
+
+                    // Get products
+                    JSONArray products = obj.getJSONArray("products");
+                    for (int j = 0; j < products.length(); j++) {
+                        JSONObject productObj = products.getJSONObject(j);
+
+                        Product product = new Product(
+                                productObj.getInt("id"),
+                                productObj.getString("name"),
+                                productObj.getString("slug"),
+                                productObj.getString("description"),
+                                Product.API_URL + "/media/" + productObj.getString("picture"),
+                                productObj.getDouble("price"),
+                                productObj.getInt("category_id")
+                        );
+
+                        categoryData.addProduct(product);
+                    }
+
+                    categories.add(categoryData);
+                }
+            } catch (JSONException e) {
+                Log.e(LOG_TAG, "ERROR PARSING JSON OBJECT");
+            }
+
+            return categories;
+        }
+
+        @Override
+        protected void onPostExecute(List<Category> categories) {
+            // BEGIN_INCLUDE (setup_viewpager)
+            // Get the ViewPager and set it's PagerAdapter so that it can display items
+            mViewPager.setAdapter(new MenuPagerAdapter(categories));
+            // END_INCLUDE (setup_viewpager)
+
+            // BEGIN_INCLUDE (setup_slidingtablayout)
+            // Give the SlidingTabLayout the ViewPager, this must be done AFTER the ViewPager has had
+            // it's PagerAdapter set.
+            mSlidingTabLayout.setViewPager(mViewPager);
+            // END_INCLUDE (setup_slidingtablayout)
         }
     }
 }

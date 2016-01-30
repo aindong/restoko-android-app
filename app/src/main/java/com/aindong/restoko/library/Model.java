@@ -15,7 +15,7 @@ import java.net.URL;
 
 public abstract class Model {
     private final String LOG_TAG = Model.class.getSimpleName();
-    private static final String API_URL  = "http://192.168.1.2:8000/api/v1/";
+    public static final String API_URL  = "http://192.168.1.2:8000/api/v1/";
 
     public String fetch(String resource) {
         return this.request("GET", resource);
