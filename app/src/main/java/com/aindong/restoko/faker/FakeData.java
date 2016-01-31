@@ -17,13 +17,13 @@ public class FakeData {
     public static List<Cart> carts;
 
     public static void make() {
-        categories = new ArrayList<Category>();
-        products = new ArrayList<Product>();
-        tables = new ArrayList<Table>();
+        //categories = new ArrayList<Category>();
+        //products = new ArrayList<Product>();
+        //tables = new ArrayList<Table>();
         carts = new ArrayList<Cart>();
 
-        createTables();
-        createCategoriesAndProducts();
+        //createTables();
+        //createCategoriesAndProducts();
     }
 
     public static Product getProductById(int productId)

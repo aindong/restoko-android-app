@@ -277,7 +277,7 @@ public class ProductMenuFragment extends Fragment {
                                 productObj.getString("name"),
                                 productObj.getString("slug"),
                                 productObj.getString("description"),
-                                Product.API_URL + "/media/" + productObj.getString("picture"),
+                                Product.API_URL + "media/" + productObj.getString("picture"),
                                 productObj.getDouble("price"),
                                 productObj.getInt("category_id")
                         );

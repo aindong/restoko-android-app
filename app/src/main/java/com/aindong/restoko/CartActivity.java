@@ -3,6 +3,7 @@ package com.aindong.restoko;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,8 +23,12 @@ import com.aindong.restoko.models.CartItem;
 import com.aindong.restoko.models.Product;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CartActivity extends AppCompatActivity {
@@ -33,6 +38,7 @@ public class CartActivity extends AppCompatActivity {
     public TextView vat;
     public TextView discount;
     public TextView totalPrice;
+    public ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +67,8 @@ public class CartActivity extends AppCompatActivity {
         if (bundle.containsKey("product")) {
             productId = bundle.getInt("product");
 
-            // Get product
-            Product product = FakeData.getProductById(productId);
-
-            // Create a cartItem and attach product
-            CartItem item = new CartItem(cart.items.size() + 1, product, 1);
-            cart.addProduct(item);
+            FetchProductTask productTask = new FetchProductTask();
+            productTask.execute(productId);
         }
 
         vatable = (TextView)  findViewById(R.id.text_vatable);
@@ -75,7 +77,7 @@ public class CartActivity extends AppCompatActivity {
         totalPrice = (TextView) findViewById(R.id.text_total_price);
 
         // Adapter
-        ListView listView = (ListView) findViewById(R.id.listview_cart);
+        listView = (ListView) findViewById(R.id.listview_cart);
         CartItemsAdapter cartItemsAdapter = new CartItemsAdapter(getApplicationContext(), cart.items);
         listView.setAdapter(cartItemsAdapter);
 
@@ -175,6 +177,50 @@ public class CartActivity extends AppCompatActivity {
 
             // Return the completed view to render on screen
             return convertView;
+        }
+    }
+
+    public class FetchProductTask extends AsyncTask<Integer, Integer, Product> {
+        private final String LOG_TAG = FetchProductTask.class.getSimpleName();
+
+        protected Product doInBackground(Integer... params) {
+            if (params.length == 0) {
+                return null;
+            }
+
+            Product product = new Product();
+
+            String json = product.fetch("products/"+params[0]);
+
+            try {
+                int status = product.getStatus(json);
+                JSONObject rawData = new JSONObject(json);
+                JSONObject data = rawData.getJSONObject("data");
+
+                product.id = data.getInt("id");
+                product.amount = data.getDouble("price");
+                product.name = data.getString("name");
+                product.slug = data.getString("slug");
+                product.category_id = data.getInt("category_id");
+                product.description = data.getString("description");
+                product.image_url = Product.API_URL + "media/" + data.getString("picture");
+
+                return product;
+            } catch (JSONException e) {
+                Log.e(LOG_TAG, "ERROR PARSING JSON OBJECT");
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Product product) {
+            // Create a cartItem and attach product
+            CartItem item = new CartItem(cart.items.size() + 1, product, 1);
+            cart.addProduct(item);
+
+            CartItemsAdapter cartItemsAdapter = new CartItemsAdapter(getApplicationContext(), cart.items);
+            listView.setAdapter(cartItemsAdapter);
         }
     }
 }

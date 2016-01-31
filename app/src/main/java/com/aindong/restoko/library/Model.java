@@ -17,8 +17,25 @@ public abstract class Model {
     private final String LOG_TAG = Model.class.getSimpleName();
     public static final String API_URL  = "http://192.168.1.2:8000/api/v1/";
 
+    private static final String GET_METHOD = "GET";
+    private static final String POST_METHOD = "POST";
+    private static final String PUT_METHOD = "PUT";
+    private static final String PATCH_METHOD = "PATCH";
+
     public String fetch(String resource) {
-        return this.request("GET", resource);
+        return this.request(GET_METHOD, resource);
+    }
+
+    public String post(String resource) {
+        return this.request(POST_METHOD, resource);
+    }
+
+    public String put(String resource) {
+        return this.request(PUT_METHOD, resource);
+    }
+
+    public String patch(String resource) {
+        return this.request(PATCH_METHOD, resource);
     }
 
     public JSONArray getData(String json) throws JSONException {
@@ -45,9 +62,7 @@ public abstract class Model {
         String jsonStr = null;
 
         try {
-            // Construct the URL for the OpenWeatherMap query
-            // Possible parameters are avaiable at OWM's forecast API page, at
-            // http://openweathermap.org/API#forecast
+            // Construct the URL for the API query
             String finalUrl = API_URL + resource;
             Log.i(LOG_TAG, finalUrl);
             URL url = new URL(finalUrl);

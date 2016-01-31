@@ -11,6 +11,11 @@ public class Product extends Model {
     public double amount;
     public int category_id;
 
+    public Product()
+    {
+        // Do nothing
+    }
+
     /**
      * Constructor when creating a new product object
      *
